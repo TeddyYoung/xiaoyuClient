@@ -1,0 +1,84 @@
+<ion-view view-title="小鱼代收" hide-nav-bar="true">
+
+  <ion-content class="content contentBg" style="overflow: auto;height: 100%">
+    <ion-refresher
+      pulling-text="努力加载中..."
+      on-refresh="refreshData()">
+    </ion-refresher>
+    <div class="text-center accountBg">
+      <img width="60px" style="border-radius: 50%" src="{{memberInfo.headImg}}">
+      <div class="whiteFont" style="font-size: 18px;margin-top: 5px">{{memberInfo.nickName}}</div>
+    </div>
+    <div class="row text-center padding0 padding15 whiteBg">
+      <div class="col title_center redColor" style="padding: 8px;" ng-click="slectStatus(-3)">未签收</div>
+      <div class="col title_center"  style="padding: 8px;" ng-click="slectStatus(3)">已签收</div>
+      <div class="col title_center"  style="padding: 8px;" ng-click="slectStatus('')">全部</div>
+    </div>
+    <div class=" whiteBg border_bottom margin-top10" style="padding-top: 2px;" ng-repeat="Order in orderList">
+      <div class="padding0  fastMailBox">
+        <div class="color9 font13 padding15" style="border-bottom: 1px solid #f2f2f2;padding-top: 5px;padding-bottom: 5px;position: relative">
+          {{Order.deliverName}}：{{Order.trackingNo}}
+          <!--普通用户订单状态-->
+          <div ng-if="memberType == 1">
+            <div style="color: red" class="statusBtn" ng-if="Order.status == 0">待商家确认</div>
+            <div style="color: red" class="statusBtn" ng-if="Order.status == 1">待商家配送</div>
+            <div style="color: red" class="statusBtn" ng-if="Order.status == 2">待确认收货</div>
+            <div class="statusBtn" ng-if="Order.status == 3">订单完成</div>
+          </div>
+          <!--代收人-->
+          <div ng-if="memberType == 0">
+            <div style="color: red" class="statusBtn" ng-if="Order.status == 0">待商家确认</div>
+            <div style="color: red" class="statusBtn" ng-if="Order.status == 1">待商家配送</div>
+            <div style="color: red" class="statusBtn" ng-if="Order.status == 2">待确认收货</div>
+            <div class="statusBtn" ng-if="Order.status == 3">订单完成</div>
+          </div>
+
+        </div>
+
+        <div class="row padding0 padding15" style="margin-top: 5px;">
+          <div class="" style="width: 70px">
+            <img ng-if="memberType == 1" width="55px" style=" margin-top: 16px;" src="{{Order.collectorHeadImg}}">
+            <img ng-if="memberType == 0" width="55px"  style=" margin-top: 16px;"  src="{{Order.memberHeadImg}}">
+          </div>
+          <div class="row">
+            <div class="color9 col-80">
+              <div ng-if="memberType == 1">
+                <div><span class="color3">姓名：</span>{{Order.collectorName}}</div>
+                <div><span class="color3">电话：</span><a style="color: red" href="tel:{{Order.collectorPhone}}">{{Order.collectorPhone}}</a></div>
+                <div><span class="color3">数量：</span>{{Order.cou}}件</div>
+                <div style="white-space: nowrap;"><span class="color3">地址：</span>{{Order.address}}</div>
+              </div>
+              <div ng-if="memberType == 0">
+                <div><span class="color3">姓名：</span>{{Order.name}}</div>
+                <div><span class="color3">电话：</span><a style="color: red" href="tel:{{Order.phone}}">{{Order.phone}}</a></div>
+                <div><span class="color3">数量：</span>{{Order.cou}}件</div>
+                <div style="white-space: nowrap;"><span class="color3">地址：</span>{{Order.address}}</div>
+              </div>
+
+            </div>
+            <div class="col-20 text-right">
+              <!--普通用户订单状态-->
+              <div ng-if="memberType == 1">
+                <!--<div class="text-center font12" style="height: 30px;line-height: 30px;color: #12b7f5" ng-if="Order.status == 0" ng-click="tipTop('请耐心等待商家同意接收！')">等待同意</div>-->
+                <!--<div class="text-center font12" style="height: 30px;line-height: 30px;color: #12b7f5" ng-if="Order.status == 1" ng-click="tipTop('请耐心等待配送！')">等待配送</div>-->
+                <div class="contentBg text-center navMainBgColor whiteFont font12" style="height: 30px;line-height: 30px" ng-if="Order.status == 2" ng-click="changeOrderStatus(Order.id,3,'确认收货？')">确认收货</div>
+                <!--<div class="text-center font12 color9" style="height: 30px;line-height: 30px;" ng-if="Order.status == 3">订单完成</div>-->
+              </div>
+              <!--代收人-->
+              <div ng-if="memberType == 0">
+                <div class="contentBg text-center navMainBgColor whiteFont font12" style="height: 30px;line-height: 30px" ng-if="Order.status == 0" ng-click="changeOrderStatus(Order.id,1,'同意代收？')">同意代收</div>
+                <!--<div class="text-center font12" style="height: 30px;line-height: 30px;color: #12b7f5" ng-if="Order.status == 1" ng-click="tipTop('请耐心等待商家同意接收！')"></div>-->
+                <div class="contentBg text-center navMainBgColor whiteFont font12" style="height: 30px;line-height: 30px" ng-if="Order.status == 1" ng-click="changeOrderStatus(Order.id,2,'确认送达？')">确认送达</div>
+                <!--<div class="text-center color9 font12" style="height: 30px;line-height: 30px" ng-if="Order.status == 2">等待确认</div>-->
+                <!--<div class="text-center color9 font12 color9" style="height: 30px;line-height: 30px" ng-if="Order.status == 3">订单完成</div>-->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div ng-show="!showLoading" class="color9 nodata" style="padding-bottom: 60px">没有更多数据啦！</div>
+    <ion-infinite-scroll ng-if="enableScrollable"  on-infinite="loadMoreGoodsList()" distance="1%" immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

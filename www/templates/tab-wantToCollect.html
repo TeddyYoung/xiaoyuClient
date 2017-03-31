@@ -1,0 +1,37 @@
+<ion-view view-title="小鱼代收" hide-nav-bar="true">
+  <ion-content class="padding">
+    <div class="card" style="padding-left: 10px;padding-right: 10px">
+      <!--<div class="item" style="padding: 10px 10px ">-->
+      <!--&lt;!&ndash;<i class="icon ion-social-windows"></i>&ndash;&gt;-->
+        <!--<img style="width: 30px;float: left;" src="img/xiaoxi_gonggao.png"/>-->
+        <!--<span style="vertical-align: -webkit-baseline-middle;">我要代收</span>-->
+    <!--</div>-->
+      <div class="item item-text-wrap">
+        <input class="applyInput" ng-model="curr.phone" placeholder="手机号" />
+        <input class="applyInput" ng-model="curr.name"  placeholder="收件人" />
+        <input class="applyInput" ng-model="curr.address"  placeholder="收货地址" />
+        <!--<input class="applyInput" ng-model="curr.cou"  placeholder="数量" />-->
+        <select class="applyInput" name="cou" id="cou">
+          <option value ="1">1件</option>
+          <option value ="2">2件</option>
+          <option value ="3">3件</option>
+          <option value ="4">4件</option>
+          <option value ="5">5件</option>
+
+        </select>
+        <select class="applyInput" name="deliver" id="deliver">
+          <option value ="">选择快递公司</option>
+          <option ng-repeat="deliver in delivers" value ="{{deliver.id}}">{{deliver.deliverName}}</option>
+        </select>
+        <input class="applyInput" id="remark" ng-model="curr.remark"  placeholder="填写其他快递公司" />
+        <input class="applyInput" placeholder="快件单号" ng-model="curr.trackingNo"  />
+        <select class="applyInput" name="collector" id="collector">
+          <option value ="">选择代收人</option>
+          <option value ="{{myCollectorList.id}}" ng-repeat="myCollectorList in myCollectorLists">{{myCollectorList.collectorName}}</option>>
+        </select>
+        <div class="navMainBgColor whiteFont height44 text-center margin-top20" ng-click="queryGoodsCatList()">确认代收</div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

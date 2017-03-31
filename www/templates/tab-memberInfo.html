@@ -1,0 +1,32 @@
+<ion-view view-title="小鱼代收" hide-nav-bar="true">
+  <ion-content class="padding contentBg padding0">
+    <div class="list margin-top10" style="margin-bottom: 10px;">
+      <a class="item item-avatar item-icon-right" href="#/tab/memberInfo/updateMember">
+        <img src="{{memberInfo.headImg}}">
+        <h2 ng-bind="memberInfo.wechatName"></h2>
+        <p>用户No：{{memberInfo.memberNo}}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </a>
+    </div>
+    <div class="list">
+      <a class="item item-icon-left item-icon-right">
+        <i class="icon ion-android-person" style="color: #12b7f5"></i>
+        收件人：{{memberInfo.collectorName}}
+        <i style="display: none" class="icon ion-ios-arrow-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right">
+        <i class="icon ion-home" style="color: #12b7f5"></i>
+        联系地址：{{memberInfo.address}}
+        <i style="display: none" class="icon ion-ios-arrow-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right">
+        <i class="icon ion-ios-telephone" style="color: #12b7f5"></i>
+        联系电话：{{memberInfo.phone}}
+        <i style="display: none" class="icon ion-ios-arrow-right"></i>
+      </a>
+    </div>
+    <div class="text-center">
+      <img width="70%" src="{{myQrCode}}">
+    </div>
+  </ion-content>
+</ion-view>

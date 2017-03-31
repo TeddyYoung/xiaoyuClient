@@ -1,0 +1,18 @@
+<ion-tabs class="tabs-icon-top tabs-color-active-positive" ng-class="{'tabs-item-hide': $root.hideTabs}">
+  <!-- 我的 -->
+  <!--<ion-tab title="我是代收人" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/home">-->
+    <!--<ion-nav-view name="tab-home"></ion-nav-view>-->
+  <!--</ion-tab>-->
+  <!-- 消息 -->
+  <ion-tab title="我要下单" ng-if="memberType == 1" icon-off="ion-ios-chatbubble-outline" icon-on="ion-ios-chatbubble"ng-click="goWantToCollect()">
+    <ion-nav-view name="tab-wantToCollect"></ion-nav-view>
+  </ion-tab>
+
+  <!-- 课表 -->
+  <ion-tab title="我的快递" icon-off="ion-ios-browsers-outline" icon-on="ion-ios-browsers" ng-click="goAccount()">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="我的资料" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" ng-click="goMemberInfo()">
+  <ion-nav-view name="tab-memberInfo"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

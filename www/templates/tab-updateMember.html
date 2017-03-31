@@ -1,0 +1,21 @@
+<ion-view view-title="小鱼代收" hide-nav-bar="true" hide-tabs="true">
+  <ion-content class="padding contentBg padding0">
+    <div class="height44 whiteBg padding15 margin-top10">
+      收件人：
+      <input type="text" ng-model="current.name" style="display: inline-flex;color: #999;width: 74%" value="{{memberInfo.collectorName}}" />
+    </div>
+    <div class="height44 whiteBg padding15 margin-top10">
+      联系地址：
+      <input type="text" ng-model="current.address" style="display: inline-flex;color: #999;width: 74%" value="{{memberInfo.address}}" />
+    </div>
+    <div class="height44 whiteBg padding15 margin-top10">
+      联系电话：
+      <input type="text" ng-model="current.phone" style="display: inline-flex;color: #999;width: 74%" value="{{memberInfo.phone}}" />
+    </div>
+    <div class="padding15">
+      <button ng-click="updateMember()" style="border: 0;width: 100%" class="height44 navMainBgColor whiteFont margin-top15">
+        确认修改
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

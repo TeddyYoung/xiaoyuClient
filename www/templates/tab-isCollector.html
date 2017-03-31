@@ -1,0 +1,18 @@
+<ion-view view-title="小鱼代收" hide-nav-bar="true" hide-tabs="true">
+  <ion-content class="padding padding0 padding15">
+      <div class="text-center" style="padding: 30px 15px">
+        <img width="75px" style="border-radius: 5px" src="{{collector.headImg}}">
+        <div style="font-size: 20px;margin-bottom: 10px">{{collector.collectorName}}</div>
+        <div class="color9">联系电话：<a href="tel:{{collector.phone}}">{{collector.phone}}</a></div>
+        <div class="color3" style="font-size: 18px;margin-top: 25px">
+          <i class="icon ion-pie-graph" style="color: #12b7f5"></i>
+          您已是代收人
+        </div>
+      </div>
+
+    <div class="navMainBgColor whiteFont height44 text-center margin-top20" style="margin-top: 35px;font-size: 16px" ng-click="goAccount()">
+      返回个人中心
+    </div>
+
+  </ion-content>
+</ion-view>

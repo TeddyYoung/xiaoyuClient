@@ -1,0 +1,38 @@
+<ion-view view-title="登录" >
+  <ion-content class="content contentBg">
+    <div class="modal">
+      <ion-header-bar class="navMainBgColor ">
+        <h1 class="title whiteFont">登录</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list">
+          <from name="myForm">
+            <div style="text-align: center;margin-top: 50px">
+              <img width="100px" src="img/sign.png"/>
+            </div>
+            <div style="padding-left: 12px;padding-right: 12px">
+              <label class="item item-input" style="margin-top: 10px">
+                <i class="icon ion-ios-person placeholder-icon"></i>
+                <span class="input-label"  style="width: 0%;margin-left: 0px"></span>
+                <input type="text" id="pattern" name="pattern" ng-minlength="11" ng-maxlength="11" required placeholder="请输入用户名">
+              </label>
+              <label class="item item-input" style="margin-top: 10px;">
+                <i class="icon ion-ios-locked placeholder-icon"></i>
+                <span class="input-label" style="width: 0%;margin-left: 0px"></span>
+                <input type="password" id="password" name="password" ng-minlength="6" ng-maxlength="16" required placeholder="请输入密码">
+              </label>
+            </div>
+          </from>
+        </div>
+        <div class="padding">
+          <button  class="button button-block button-positive" style="background:#12b7f5"  ng-click="closeModal()" >
+            立即登录
+          </button>
+          <p class="text-right">
+            <a style="color:#A9A6A6;">找回密码</a>
+          </p>
+        </div>
+      </ion-content>
+    </div>
+  </ion-content>
+</ion-view>
